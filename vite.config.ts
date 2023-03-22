@@ -1,14 +1,40 @@
 import { fileURLToPath, URL } from 'node:url'
-import Unocss from 'unocss/vite'
-import { defineConfig } from 'vite'
+
+import UnoCSS from '@unocss/vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue(), Unocss({})],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
+import {
+
+  presetUno,
+  presetAttributify,
+  presetWebFonts
+
+} from 'unocss'
+import { COLOR_PALETTE } from './theme/palette'
+import { TYPOGRAPHY } from './theme/typography'
+
+export default {
+  plugins: [
+    vue(),
+    UnoCSS({
+      theme: {
+        breakpoints: {
+          xs: '320px',
+          sm: '640px',
+          md: '768px',
+        },
+        colors: COLOR_PALETTE,
+      },
+      presets: [
+        presetAttributify(), // required if using attributify mode
+        presetUno(),
+        presetWebFonts({
+          fonts: {
+            sans: 'Roboto',
+          }
+        })
+      ],
+      shortcuts: [TYPOGRAPHY]
+    }),
+  ],
+}
