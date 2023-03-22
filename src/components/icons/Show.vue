@@ -1,15 +1,8 @@
 <script lang="ts">
-import { ref } from 'vue'
 export default {
   props: {
     width: String,
     height: String
-  },
-  setup() {
-    const count = ref(0)
-    return {
-      count
-    }
   }
 }
 </script>

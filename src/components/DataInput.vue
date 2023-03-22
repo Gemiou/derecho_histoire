@@ -100,7 +100,7 @@ const updateType = () => {
         <input
           :disabled="disabled"
           v-model="input_text"
-          class="pl-2 py-3 w-full placeholder:opacity-100 b-rd-[5px]"
+          class="w-full placeholder:opacity-100 b-rd-[5px] p-2 py-3"
           placeholder="E.g. Wakababa"
           @input="changeInput()"
           :type="input_text_type"
@@ -134,7 +134,7 @@ const updateType = () => {
           :class="[
             { 'right-7': type === 'password' },
             { 'right-1': type === 'text' },
-            { 'left-1': type === 'number' }
+            { 'right-4': type === 'number' }
           ]"
         >
           <button type="button" class="b-none bg-transparent" @click="clearInput()">
